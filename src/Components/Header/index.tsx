@@ -10,11 +10,17 @@ const Header = ({ setModalAnimation, modalAnimation }: IModal) => {
 
   return (
     <Head>
-      <Logo onClick={() => setModalAnimation(false)}>
+      <Logo onClick={() => setModalAnimation(0)}>
         <p className="first-name">MKS</p>
         <p className="middle-name">Sistemas</p>
       </Logo>
-      <button onClick={() => setModalAnimation(!modalAnimation)} className="cart-button">
+      <button
+        data-testid="open-modal"
+        onClick={() =>
+          modalAnimation ? setModalAnimation(0) : setModalAnimation(1)
+        }
+        className="cart-button"
+      >
         <CartIcon />
         <p className="count-cart">{itemsInCart}</p>
       </button>

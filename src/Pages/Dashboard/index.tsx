@@ -7,18 +7,18 @@ import Main from "../../Components/Main";
 
 export interface IModal {
   modalAnimation?: any;
-  setModalAnimation: (show: boolean) => void;
+  setModalAnimation: (show: number) => void;
 }
 const Dashboard = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [modalAnimation, setModalAnimation] = useState<boolean>(false);
+  const [modalAnimation, setModalAnimation] = useState<number>(0);
 
   useEffect(() => {
     showModal === true
       ? setTimeout(() => {
-          setShowModal(modalAnimation);
+          modalAnimation ? setShowModal(true) : setShowModal(false);
         }, 450)
-      : setShowModal(modalAnimation);
+      : modalAnimation ? setShowModal(true) : setShowModal(false);
   }, [modalAnimation]);
 
   return (
