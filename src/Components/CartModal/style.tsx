@@ -7,7 +7,7 @@ interface IButtonProps {
 }
 
 interface IShowModal {
-  action: boolean;
+  $action: number;
 }
 
 const showModal = keyframes`
@@ -50,7 +50,7 @@ export const Modal = styled.div<IShowModal>`
   
 	background-color: var(--color-primary);
 
-	animation: ${(props) =>props.action === true ? showModal : hideModal} 0.5s;
+	animation: ${(props) =>props.$action ? showModal : hideModal} 0.5s;
 
   .modal-header {
     margin-top: 36px;

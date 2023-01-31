@@ -13,7 +13,8 @@ const CartProduct = ({ id, photo, name, price, quantity }: IProduct) => {
 
   return (
     <>
-      <CartCard>
+      <CartCard data-testid="cart-card">
+
         <img src={photo} alt={name} />
         <p className="product-name">{name}</p>
 
@@ -27,7 +28,7 @@ const CartProduct = ({ id, photo, name, price, quantity }: IProduct) => {
                 -
               </button>
               <span className="split"></span>
-              <p className="quantity">{quantity}</p>
+              <p data-testid="quantity-product" className="quantity">{quantity}</p>
               <span className="split"></span>
               <button
                 onClick={() => dispatch(addToCart({ id }))}
@@ -55,3 +56,42 @@ const CartProduct = ({ id, photo, name, price, quantity }: IProduct) => {
 };
 
 export default CartProduct;
+
+
+// it("should  be able to remove product from cart", async () => {
+// 	const { queryByTestId, getByTestId, findByText } = render(
+// 		<BrowserRouter>
+// 			<Provider store={store}>
+// 				<App />
+// 			</Provider>
+// 		</BrowserRouter>
+// 	);
+
+// 	const openModal = getByTestId("open-modal");
+// 	await user.click(openModal);
+
+// 	const removeFromCartButton = await findByText("-");
+// 	await user.click(removeFromCartButton);
+
+// 	expect(queryByTestId("cart-card")).not.toBeInTheDocument();
+// });
+
+
+
+// it("should  be able to increase product in cart", async () => {
+// 	const { getByTestId, findByText } = render(
+// 		<BrowserRouter>
+// 			<Provider store={store}>
+// 				<App />
+// 			</Provider>
+// 		</BrowserRouter>
+// 	);
+		
+// 	const openModal = getByTestId("open-modal");
+// 	await user.click(openModal);
+
+// 	const increaseFromCartButton = await findByText("+");
+// 	await user.click(increaseFromCartButton);
+
+// 	expect(getByTestId("quantity-product")).toBe(2);
+// });

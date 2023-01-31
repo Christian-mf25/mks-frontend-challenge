@@ -19,7 +19,7 @@ const ModalCart = ({ setModalAnimation, modalAnimation }: IModal) => {
   useEffect(() => {
     const handleEsc = (event: any) => {
       if (event.keyCode === 27) {
-        setModalAnimation(!modalAnimation);
+        modalAnimation ? setModalAnimation(0) : setModalAnimation(1);
       }
     };
     window.addEventListener("keydown", handleEsc);
@@ -30,12 +30,15 @@ const ModalCart = ({ setModalAnimation, modalAnimation }: IModal) => {
   });
 
   return (
-    <Modal action={modalAnimation}>
+    <Modal $action={modalAnimation}>
       <div className="modal-header flex-items">
         <p>Carrinho de compras</p>
         <CloseButton
+					data-testid="close-modal"
           className="close-button"
-          onClick={() => setModalAnimation(!modalAnimation)}
+          onClick={() =>
+            modalAnimation ? setModalAnimation(0) : setModalAnimation(1)
+          }
           close="modal"
           dimension="big"
           font="big"
